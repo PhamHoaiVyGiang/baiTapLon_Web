@@ -142,48 +142,16 @@
         </div>
     </section>
   </div>  
-    <div class="footer-wrapper"></div>
-      <div class="contact-wrapper">
-          <div class="contact">
-            <span class="contact-title">Funiro.<br>
-              <div class="contact-text">
-                400 University Drive Suite 200 Coral
-                <br>
-                Gables,
-                <br>
-                FL 33134 USA
-              </div>
-            </span>
-            <div class="contact-nav">
-            
-              <span class="nav-title">Links</span>
-              <span class="nav-link">Home</span>
-              <span class="nav-link">Shop</span>
-              <span class="nav-link">About</span>
-              <span class="nav-link">Contact</span>
-            </div>
-            <div class="contact-nav">
-              <span class="nav-title">Help</span>
-              <span class="nav-link">Payment Options</span>
-              <span class="nav-link">Returns</span>
-              <span class="nav-link">Privacy Policies</span>
-            </div>
-            <div class="contact-nav">
-              <p class="nav-title">Newsletter</p>
-              <div class="newsletter">
-                <input type="email" placeholder="Enter Your Email Address" />
-                <button>SUBSCRIBE</button>
-              </div>
-            </div>
-            <div class="footer-divider"></div>
-            <div class="footer">
-              <p>2023 funiro. All rights reverved</p>
-            </div>
-          </div> 
-      </div>
-</div>
-        
 
+        <div id="footer"></div>
+
+      <script>
+        fetch("footer.html")
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById("footer").innerHTML = data;
+            });
+    </script>
     
     <script>
         let itemlist = [
