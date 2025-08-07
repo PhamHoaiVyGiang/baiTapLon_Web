@@ -247,31 +247,26 @@
     background-color: palevioletred
 }
 .bubble.new{
-    background-color: green
+    background-color: rgb(83, 158, 83)
 }
 
-.show-more-container {
-    display: flex;
-  justify-content: center;
-  margin: 40px 0;
+
+.more-btn-container {
+    text-align: center; 
+}
+.more-btn{
+    display: inline-block;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border: 1px solid #B88E2F; 
+    color: #B88E2F; 
+    background-color: transparent;
+    padding: 10px 60px;
+    text-decoration: none;
+    
+   
 }
 
-.show-more-btn{
-  background-color: white;
-  color: #B88E2F;
-  border: 1px solid #B88E2F;
-  font-size: 16px;
-  font-weight: 600;
-  padding: 12px 40px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-family: 'Poppins', sans-serif;
-}
-
-.show-more-btn:hover{
-    background-color: #B88E2F;
-    color: white;
-}
 
 .room-inspiration {
   display: flex;
@@ -654,3 +649,4 @@ html, body {
   padding: auto;
   margin: auto;
 }
+
