@@ -107,9 +107,9 @@
   color: #000;
 }
 
-.icon {
+ .contact-icon{
   width: 22px;
-  height: 27.59px;
+  height: 27.5px;
   flex-shrink: 0;
 }
 
@@ -263,14 +263,7 @@
   flex-direction: column;
 }
 
-.nav-link{
-  color: #000000;
-  font-size: 16px;
-  font-weight: 500;
-  cursor: pointer;
-  margin-bottom: 50px;
-  white-space: nowrap;
-}
+
 
 .newsletter{
   display: flex;
@@ -300,20 +293,3 @@
   padding-bottom: 3px;
 }
 
-.footer-divider{
-  margin-top: 0;
-  margin-bottom: 0.5vw;
-  border: none;
-  border-top: 1px solid #9F9F9F;
-  width: 100%;
-  grid-column: 1 / -1;
-  height: 1px;
-}
-
-.footer{
-  white-space: nowrap;
-  text-align: left;
-  font-size: 16px;
-  padding: auto;
-  margin: auto;
-}
