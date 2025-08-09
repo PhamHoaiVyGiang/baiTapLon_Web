@@ -470,7 +470,7 @@
   background-color: #b88e2f;
 }
 
-html,
+
 body {
   overflow-x: hidden;
 }
@@ -595,6 +595,14 @@ body {
   order: 3;
 }
 
+.nav-links{
+  color: #000000;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-bottom: 50px;
+  white-space: nowrap;
+}
 
 .contact-wrapper {
   max-width: 1440px;
