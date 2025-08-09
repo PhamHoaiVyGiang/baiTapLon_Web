@@ -58,7 +58,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="our-product">
         <h1 class="our-product-title">
             Our Products
@@ -66,94 +66,118 @@
 
         <div class="our-product-image" id="our-product-image"></div>
 
-      <div class="more-btn-container">
-        <a class="more-btn" href ="shop.html">Show more</a>
-    </div>
+        <div class="more-btn-container">
+            <a class="more-btn" href="shop.html">Show more</a>
+        </div>
 
     </div>
-    
+
     <div class="header-3">
-      <footer class="footer-wrapper">
-   <div class="room-inspiration">
-  <div class="room-left">
-    <span>50+ Beautiful rooms<br> inspiration</span>
-    <p>Our designer already made a lot of beautiful prototype of rooms that inspire you</p>
-    <button class="explore-btn">Explore More</button>
-  </div>
 
-  <div class="room-right">
-    <div class="room-slider-wrapper">
-      <div class="room-slider">
-        <!-- Slide 1 -->
-        <div class="room-card">
-          <img src="images/Image.png" alt="Room 1" />
-        </div>
+        <section class="room-inspiration">
+            <div class="room-wrap" id="room-wrap">
+                <div class="room-left">
+                    <span>50+ Beautiful rooms<br> inspiration</span>
+                    <p>Our designer already made a lot of beautiful prototype of rooms that inspire you</p>
+                    <button class="explore-btn">Explore More</button>
+                </div>
 
-        <!-- Slide 2 -->
-        <div class="room-card2">
-          <img src="images/Rectangle 25.png" alt="Room 2" />
-           <div class="room-arrow">
-             <img src="images/Group 13.png" alt="Next" />
-           </div>
-            <!-- Dot indicator -->
-           <div class="slider-dots">
-            <span class="dot dot-active"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-           </div>
-        </div>
+                <div class="room-right">
+                    <div class="room-slider-wrapper">
+                        <div class="room-slider">
+                            <!-- Slide 1 -->
+                            <div class="room-card">
+                                <img src="images/Image.png" alt="Room 1" />
+                            </div>
 
-        <!-- Slide 3 -->
-        <div class="room-card">
-          <img src="images/Rectangle 40.png" alt="Room 3" />
-        </div>
+                            <!-- Slide 2 -->
+                            <div class="room-card2">
+                                <img src="images/Rectangle 25.png" alt="Room 2" />
 
-        <div class="room-card">
-          <img src="images/Rectangle 43.png" alt="Room 4" />
-        </div>
+                                <!-- Dot indicator -->
+                                <div class="slider-dots">
+                                    <span class="dot dot-active"></span>
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
+                                </div>
+                            </div>
 
-        <div class="room-card">
-          <img src="images/Rectangle 45.png" alt="Room 5" />
-        </div>
-      </div>
+                            <!-- Slide 3 -->
+                            <div class="room-card">
+                                <img src="images/Rectangle 40.png" alt="Room 3" />
+                            </div>
+
+                            <div class="room-card">
+                                <img src="images/Rectangle 43.png" alt="Room 4" />
+                            </div>
+
+                            <div class="room-card">
+                                <img src="images/Rectangle 45.png" alt="Room 5" />
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <button class="room-arrow right" id="arrow-right">
+                <img src="images/Group 13.png" alt="Next" />
+            </button>
+            <button class="room-arrow left" id="arrow-left">
+                <img style="transform: rotate(180deg)" src="images/Group 13.png" alt="Next" />
+            </button>
+        </section>
 
     </div>
-  </div>
-</div>
-
-
-      <h2>Share your setup with</h2>
-      <div class="hashtag">#FuniroFurniture</div>
+    <div class="text-h3" style="text-align: center;">
+        <h2>Share your setup with</h2>
+        <div class="hashtag">#FuniroFurniture</div>
     </div>
     <section class="gallery">
         <div class="top-row">
-          <img src="images/Rectangle 36 (1).png" alt="">
-          <img src="images/Rectangle 38.png" alt="">
-          <img src="images/Rectangle 40.png" alt="">
-          <img src="images/Rectangle 43.png" alt="">
-          <img src="images/Rectangle 45.png" alt="">
+            <img src="images/Rectangle 36 (1).png" alt="">
+            <img src="images/Rectangle 38.png" alt="">
+            <img src="images/Rectangle 40.png" alt="">
+            <img src="images/Rectangle 43.png" alt="">
+            <img src="images/Rectangle 45.png" alt="">
         </div>
         <div class="bot-row">
-          <img src="images/Rectangle 37.png" alt="">
-          <img src="images/Rectangle 39.png" alt="">
-          <img src="images/Rectangle 41.png" alt="">
-          <img src="images/Rectangle 44.png" alt="">
+            <img src="images/Rectangle 37.png" alt="">
+            <img src="images/Rectangle 39.png" alt="">
+            <img src="images/Rectangle 41.png" alt="">
+            <img src="images/Rectangle 44.png" alt="">
         </div>
     </section>
-  </div>  
+    </div>
 
-        <div id="footer"></div>
+    <div id="footer"></div>
 
-      <script>
+    <script>
         fetch("footer.html")
             .then(res => res.text())
             .then(data => {
                 document.getElementById("footer").innerHTML = data;
             });
     </script>
-    
+
     <script>
+        const slide = document.getElementById('room-wrap')
+        const right = document.getElementById('arrow-right')
+        const left = document.getElementById('arrow-left')
+        right.addEventListener('click', (e) => {
+            slide.scrollBy({ left: 150, behavior: "smooth" })
+        })
+        left.addEventListener('click', (e) => {
+            slide.scrollBy({ left: -150, behavior: "smooth" })
+        })
+        const showhide =()=>{
+            if(slide.scrollLeft>100){
+                left.style.display = "block"
+            }else{
+                left.style.display="none"
+            }
+        }
+        slide.addEventListener('scroll',showhide)
         let itemlist = [
             {
                 image: "/images/product-1.png",
@@ -267,8 +291,8 @@
         </div>`
         }))
     </script>
-    
-    
+
+
 </body>
 
 </html>
