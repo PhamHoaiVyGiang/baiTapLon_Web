@@ -31,7 +31,7 @@
             <h3 class="banner-descriptin">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium soluta ab
                 repudiandae fugit aperiam ad quibusdam! Ipsum autem temporibus, illo corporis harum eligendi, labore
                 veritatis, minus dicta ut delectus a.</h3>
-            <a class="buy-btn">Buy Now</a>
+            <a href="shop.html" class="buy-btn">BUY NOW</a>
         </div>
     </div>
     <div class="new-product">
@@ -282,16 +282,105 @@
             </div>
             
             <div class="more-info">
-                <a href="cart.html" class="addcart-btn">add to cart</a>
-                <div class="more-info-bottom">
-                    <a class="info-link" href="#"><img src="/images/Frame 11.png" alt=""></a>
-                    <a class="info-link" href="#"><img src="/images/Frame 12.png" alt=""></a>
-                   <a class="info-link" href="#"><img src="/images/Frame 10.png" alt=""></a>
-                </div>
+               <a href="cart.html" class="addcart-btn" onclick="addToCart('${x.name}', ${x.price}, '${x.image}')">add to cart</a>
+              <div class="more-info-bottom">
+                <a class="info-link" href="#"><img src="/images/Frame 11.png" alt=""></a>
+                <a class="info-link" href="#"><img src="/images/Frame 12.png" alt=""></a>
+                <a class="info-link" href="#"><img src="/images/Frame 10.png" alt=""></a>
+              </div>
             </div>
-        </div>`
+          </div>`;
         }))
-    </script>
+
+  </script>
+  <script>
+  const addToCartButtons = document.querySelectorAll(".add-to-cart-btn");
+
+  addToCartButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      const name = button.getAttribute("data-name");
+      const price = parseInt(button.getAttribute("data-price"));
+      const image = button.getAttribute("data-image");
+
+      const product = {
+        name,
+        price,
+        image,
+        quantity: 1
+      };
+
+      // Lấy giỏ hàng hiện tại (nếu có)
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+      // Kiểm tra nếu sản phẩm đã tồn tại → tăng số lượng
+      const existingProduct = cart.find(item => item.name === product.name);
+      if (existingProduct) {
+        existingProduct.quantity += 1;
+      } else {
+        cart.push(product);
+      }
+
+      localStorage.setItem("cart", JSON.stringify(cart));
+
+      // Chuyển sang trang giỏ hàng
+      window.location.href = "cart.html";
+    });
+  });
+
+
+  function attachAddToCartEvents() {
+    const addToCartButtons = document.querySelectorAll(".add-to-cart-btn");
+
+    addToCartButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        const name = button.getAttribute("data-name");
+        const price = parseInt(button.getAttribute("data-price"));
+        const image = button.getAttribute("data-image");
+
+        const product = { name, price, image, quantity: 1 };
+
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        const existingProduct = cart.find(item => item.name === product.name);
+        if (existingProduct) {
+          existingProduct.quantity += 1;
+        } else {
+          cart.push(product);
+        }
+
+        localStorage.setItem("cart", JSON.stringify(cart));
+
+        // 👉 Sau khi thêm vào cart, chuyển qua trang cart
+        window.location.href = "cart.html";
+      });
+    });
+  }
+
+//Thêm và cart
+  function addToCart(name, price, image) {
+    const product = {
+      name,
+      price,
+      image,
+      quantity: 1
+    };
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    const existingProduct = cart.find(item => item.name === product.name);
+    if (existingProduct) {
+      existingProduct.quantity += 1;
+    } else {
+      cart.push(product);
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    // Chuyển sang trang giỏ hàng
+    window.location.href = "cart.html";
+  }
+</script>
+
 
 
 </body>

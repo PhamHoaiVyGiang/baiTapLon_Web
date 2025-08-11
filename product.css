@@ -143,6 +143,17 @@
     color: white;
 }
 
+.size-btn.selected{
+  transform: scale(1.05);
+  transition: 0.2s;
+}
+
+.color-btn.selected {
+    border: 3px solid white;
+  transform: scale(1.05);
+  transition: 0.2s;
+}
+
 .color-btn {
     width: 30px;
     height: 30px;
@@ -266,6 +277,7 @@
     font-size: 16px;
     color: #9F9F9F;
     line-height: 1.6;
+    display: none;
 }
 
 .tab-content p:first-of-type {

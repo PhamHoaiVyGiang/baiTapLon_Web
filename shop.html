@@ -297,7 +297,7 @@
             </div>
             
             <div class="more-info">
-                <a href="" class="addcart-btn">add to cart</a>
+                <a href="cart.html" class="addcart-btn">add to cart</a>
                 <div class="more-info-bottom">
                     <a class="info-link" href="#"><img src="/images/Frame 11.png" alt=""></a>
                     <a class="info-link" href="#"><img src="/images/Frame 12.png" alt=""></a>
@@ -375,10 +375,17 @@ const listBtn = document.getElementById('list-view-btn');
     let filteredList = [...fullItemList]; 
 
     
-function attachAddToCartEvents() {
-  const addToCartButtons = document.querySelectorAll(".add-to-cart-btn");
-}
-    function renderProducts() {
+gridBtn.addEventListener('click', () => {
+  container.classList.add('grid-view');
+  container.classList.remove('list-view');
+});
+
+listBtn.addEventListener('click', () => {
+  container.classList.add('list-view');
+  container.classList.remove('grid-view');
+});
+
+function renderProducts() {
       container.innerHTML = "";
 
       let start = (currentPage - 1) * itemsPerPage;
@@ -388,14 +395,14 @@ function attachAddToCartEvents() {
       pageItems.forEach(item => {
         container.innerHTML += formatProductHTML(item);
       });
-      
-      document.getElementById("showing-count").textContent = `${start + 1}–${Math.min(end, filteredList.length)}`;
-      document.getElementById("total-count").textContent = filteredList.length;
-      renderPagination();
 
+      document.getElementById("showing-count").textContent = 
+        `${start + 1}–${Math.min(end, filteredList.length)}`;
+      document.getElementById("total-count").textContent = filteredList.length;
+
+      renderPagination();
       attachAddToCartEvents();
     }
-   
 
     let currentCategory = "";
 
