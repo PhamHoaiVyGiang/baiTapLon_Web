@@ -21,25 +21,25 @@
     </script>
 
     <div class="breadcrumb">
-        <span><a href="home.html">Home </a> &gt; <a href="shop.html">Shop </a> &gt; <strong> | Asgaard sofa</strong></span>
+        <span><a href="home.html">Home </a> &gt; <a href="shop.html">Shop </a> &gt; <strong id="product-name"> | </strong></span>
     </div>
 
     <main class="product-page">
         <section class="product-images">
             <div class="thumbs">
-                <img src="images/Group 94.png" onclick="showImage('images/Outdoor sofa set 2.png')" alt="thumb 1">
-                <img src="images/Group 98.png" onclick="showImage('images/Outdoor sofa set_2 1.png')" alt="thumb 2">
-                <img src="images/Group 97.png" onclick="showImage('images/Stuart sofa 1.png')" alt="thumb 3">
-                <img src="images/Group 96.png" onclick="showImage('images/Maya sofa three seater (1) 1.png')" alt="thumb 4">
+                <img src="images/Outdoor sofa set 2.png" onclick="showImage('images/Outdoor sofa set 2.png')" alt="thumb 1">
+                <img src="images/Outdoor sofa set_2 1.png" onclick="showImage('images/Outdoor sofa set_2 1.png')" alt="thumb 2">
+                <img src="images/Stuart sofa 1.png" onclick="showImage('images/Stuart sofa 1.png')" alt="thumb 3">
+                <img src="images/Maya sofa three seater (1) 1.png" onclick="showImage('images/Maya sofa three seater (1) 1.png')" alt="thumb 4">
             </div>
-            <div class="main-image">
-                <img id="mainImg" src="images/Group 95.png" alt="">
+            <div class="main-image"  onclick="goToProductPage('Asgaard sofa', 'images/Asgaard sofa 5.png', 250000, ['L', 'XL', 'XS'], ['#816DFA', '#000000', '#B88E2F'])">
+                <img id="mainImg" src="images/Asgaard sofa 5.png" alt="">
             </div>
         </section>
 
         <section class="product-infor">
-            <h1>Asgaard sofa</h1>
-            <p class="price">Rs. 250,000.0</p>
+            <h1 id="product-name">Asgaard sofa</h1>
+            <p class="price" id="product-price">Rs. 250,000.0</p>
             <div class="rating">
                 <span><img src="images/star.png" alt=""></span>
                 <span><img src="images/star.png" alt=""></span>
@@ -56,7 +56,7 @@
                 <div class="option-block">
                     <p>Size</p>
                     <div class="inline-buttons">
-                        <button class="size-btn selected" style="background-color: #B88E2F;">L</button>
+                        <button class="size-btn selected">L</button>
                         <button class="size-btn">XL</button>
                         <button class="size-btn">XS</button>
                     </div>
@@ -78,9 +78,8 @@
                         <input type="number" id="quantity-input" value="1" readonly>
                         <button id="increase">+</button>
                 </div>
-                <a href="cart.html">
-                    <button class="btn-primary">Add To Cart</button>
-                </a>
+                <button class="btn-primary" onclick="handleAddToCart()">Add To Cart</button>
+
                 <button class="btn-outline">+ Compare</button>
             </div>
 
@@ -92,9 +91,9 @@
 
             <div class="share">
                 <p>Share     :</p>
-                <span><img src="images/Vector (3).png" alt=""></span>
-                    <span><img src="images/icon-in.png" alt=""></span>
-                    <span><img src="images/Vector (4).png" alt="">
+                <span><img src="images/akar-icons_facebook-fill.png" alt=""></span>
+                    <span><img src="images/akar-icons_linkedin-box-fill.png" alt=""></span>
+                    <span><img src="images/ant-design_twitter-circle-filled.png" alt="">
                 </span>
             </div>
         </section>
@@ -117,11 +116,20 @@
                 to your personal preferences while the guitar-influenced leather strap enables easy and stylish travel.
             </p>
         </div>
+        <div class="tab-content">
+            <p><strong>Weight:</strong> 15 kg</p>
+            <p><strong>Dimensions:</strong> 120 x 75 x 85 cm</p>
+            <p><strong>Material:</strong> Fabric, Wood, Metal</p>
+        </div>
+        <div class="tab-content">
+            <p><strong>John D.</strong> - Great sofa, very comfortable!</p>
+            <p><strong>Jane S.</strong> - Good quality but delivery was slow.</p>
+        </div>
     </section>
 
     <div class="bottom-images">
-        <img src="images/Group 107.png" alt="">
-        <img src="images/Group 106.png" alt="">
+        <img src="images/Cloud sofa three seater + ottoman_2 1.png" alt="">
+        <img src="images/Cloud sofa three seater + ottoman_1 1.png" alt="">
     </div>
 
     <div class="our-product">
@@ -250,24 +258,21 @@
         function showImage(src) {
         document.getElementById('mainImg').src = src;
         }
-
-        function addToCart(name, price, image) {
-    // Lấy mảng giỏ hàng hiện tại từ localStorage hoặc tạo mới
+function addToCart(name, price, image, quantity) {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-    // Kiểm tra sản phẩm đã có trong giỏ hàng chưa
     let index = cart.findIndex(item => item.name === name);
     if (index > -1) {
-        // Nếu có rồi thì tăng số lượng
-        cart[index].quantity += 1;
+        cart[index].quantity += quantity; // Cộng thêm số lượng đã chọn
     } else {
-        // Nếu chưa thì thêm mới
-        cart.push({name: name, price: price, image: image, quantity: 1});
+        cart.push({ name, price, image, quantity }); //Thêm mới với số lượng đúng
     }
 
-    // Lưu lại vào localStorage
     localStorage.setItem('cart', JSON.stringify(cart));
+    window.location.href = "cart.html";
 }
+
+
 
 // Lấy tất cả các tab và nội dung tab
 const tabs = document.querySelectorAll('.tab');
@@ -285,6 +290,48 @@ tabs.forEach((tab, index) => {
   });
 });
 
-    </script>
+
+window.onload = function() {
+  const productData = localStorage.getItem("selectedProduct");
+  if (productData) {
+    const product = JSON.parse(productData);
+
+    // Ví dụ hiển thị thông tin
+    document.querySelector("#product-name").textContent = product.name;
+    document.querySelector("#mainImg").src = product.image;
+    document.querySelector("#product-price").textContent = "Rb " + product.price;
+    // ... xử lý các trường khác tương tự
+  }
+};
+
+function handleAddToCart() {
+    const name = document.querySelector("#product-name").textContent;
+    const priceText = document.querySelector("#product-price").textContent.replace(/[^\d]/g, ""); // chỉ lấy số
+    const price = parseInt(priceText);
+    const image = document.querySelector("#mainImg").src;
+    const quantity = parseInt(document.getElementById("quantity-input").value); //Lấy số lượng
+
+    addToCart(name, price, image, quantity); // Truyền vào
+}
+
+  // Xử lý chọn Size
+  document.querySelectorAll(".size-btn").forEach(button => {
+  button.addEventListener("click", function () {
+    // Bỏ class selected khỏi tất cả các nút
+    document.querySelectorAll(".size-btn").forEach(btn => btn.classList.remove("selected"));
+    // Thêm class selected vào nút được bấm
+    this.classList.add("selected");
+  });
+});
+
+
+  // Xử lý chọn Color
+  document.querySelectorAll(".color-btn").forEach(button => {
+    button.addEventListener("click", function () {
+      document.querySelectorAll(".color-btn").forEach(btn => btn.classList.remove("selected"));
+      this.classList.add("selected");
+    });
+  });
+</script>
 </body>
 </html>
