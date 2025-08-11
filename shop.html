@@ -123,11 +123,7 @@
                 document.getElementById("footer").innerHTML = data;
             });
       </script>
-  <div class="product" id="product1">
-  <img src="img/product1.jpg" alt="Sản phẩm 1">
-  <h3>Sản phẩm 1</h3>
-</div>
-
+    
 
   <script>
     let itemlist = [
@@ -260,58 +256,6 @@
 
 
     let src = document.getElementById("our-product-image")
-
-    itemlist.map(((x, i) => {
-
-      //format gia
-      let priceFormatted = x.price.toLocaleString("vi-VN");
-      let dispriceFormatted = x.disprice ? x.disprice.toLocaleString("vi-VN") : "";
-      //chinh phan tram gia
-      let saleBadge = "";
-      if (x.sale) {
-        if (typeof x.sale === "string" && x.sale.trim().toLowerCase() === "new") {
-          saleBadge = `<div class="bubble new"><h5>New</h5></div>`;
-        }
-        else if (!isNaN(x.sale)) {
-          saleBadge = `<div class="bubble sale"><h5>${x.sale}%</h5></div>`;
-        }
-      }
-      //disprice không có thì ẩn
-      let dispriceHTML = dispriceFormatted
-        ? `<h3 class="dis-price">Rp ${dispriceFormatted}</h3>`
-        : "";
-      src.innerHTML += `    <div class="product-content">
-            <div class="product-main">
-                <div style="display: flex; flex-direction: column;">
-                    <div style="position: relative">
-                    <img class="image" src="${x.image}" alt="">
-                    ${saleBadge}
-                </div>
-                    <div class="content">
-                        <h1 class="name">${x.name}</h1>
-                        <h2 class="type">${x.type}</h2>
-                        <div class="price">   <h3 class="real-price">Rp ${priceFormatted}</h3>
-                        ${dispriceHTML}</div>
-                    </div>
-                </div>  
-            </div>
-            
-            <div class="more-info">
-                <a href="cart.html" class="addcart-btn">add to cart</a>
-                <div class="more-info-bottom">
-                    <a class="info-link" href="#"><img src="/images/Frame 11.png" alt=""></a>
-                    <a class="info-link" href="#"><img src="/images/Frame 12.png" alt=""></a>
-                   <a class="info-link" href="#"><img src="/images/Frame 10.png" alt=""></a>
-                </div>
-            </div>
-
-            
-        </div>`
-
-    }))
-
-
-
     function formatProductHTML(x) {
       let priceFormatted = x.price.toLocaleString("vi-VN");
       let dispriceFormatted = x.disprice ? x.disprice.toLocaleString("vi-VN") : "";
