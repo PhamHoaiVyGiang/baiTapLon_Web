@@ -41,9 +41,16 @@
     </div>
 
     <div id="view-toggle" class="view-toggle">
-      <img src="images/girp-image.png" alt="">
-      <img src="images/list-image.png" alt="">
+      <button id="grid-view-btn" title="Dạng lưới">
+        <img src="images/girp-image.png" alt="Grid View">
+      </button>
+      <button id="list-view-btn" title="Dạng danh sách">
+        <img src="images/list-image.png" alt="List View">
+      </button>
     </div>
+
+    <!-- Danh sách sản phẩm -->
+    <div id="product-list" class="grid-view"></div>
 
     <div class="results-info">
       | Showing <span id="showing-count">1–16</span> of <span id="total-count">32</span> results
@@ -271,7 +278,7 @@
       }
       //disprice không có thì ẩn
       let dispriceHTML = dispriceFormatted
-        ? `<h3 class="dis-price">Rb ${dispriceFormatted}</h3>`
+        ? `<h3 class="dis-price">Rp ${dispriceFormatted}</h3>`
         : "";
       src.innerHTML += `    <div class="product-content">
             <div class="product-main">
@@ -283,7 +290,7 @@
                     <div class="content">
                         <h1 class="name">${x.name}</h1>
                         <h2 class="type">${x.type}</h2>
-                        <div class="price">   <h3 class="real-price">Rb ${priceFormatted}</h3>
+                        <div class="price">   <h3 class="real-price">Rp ${priceFormatted}</h3>
                         ${dispriceHTML}</div>
                     </div>
                 </div>  
@@ -334,7 +341,7 @@
                   <h1 class="name">${x.name}</h1>
                   <h2 class="type">${x.type}</h2>
                   <div class="price">
-                    <h3 class="real-price">Rb ${priceFormatted}</h3>
+                    <h3 class="real-price">Rp ${priceFormatted}</h3>
                     ${dispriceHTML}
                   </div>
                 </div>
@@ -357,7 +364,9 @@
     let itemsPerPage = 16;
 
     const container = document.getElementById("our-product-image");
-    
+     const containers = document.getElementById('product-list');
+const gridBtn = document.getElementById('grid-view-btn');
+const listBtn = document.getElementById('list-view-btn');
     const showInput = document.getElementById("show-input");
     const sortSelect = document.getElementById("sort-select");
     const searchInput = document.getElementById("search-input");
@@ -365,6 +374,7 @@
     const fullItemList = itemlist;
     let filteredList = [...fullItemList]; 
 
+    
 function attachAddToCartEvents() {
   const addToCartButtons = document.querySelectorAll(".add-to-cart-btn");
 }
@@ -378,13 +388,14 @@ function attachAddToCartEvents() {
       pageItems.forEach(item => {
         container.innerHTML += formatProductHTML(item);
       });
-
+      
       document.getElementById("showing-count").textContent = `${start + 1}–${Math.min(end, filteredList.length)}`;
       document.getElementById("total-count").textContent = filteredList.length;
       renderPagination();
 
       attachAddToCartEvents();
     }
+   
 
     let currentCategory = "";
 

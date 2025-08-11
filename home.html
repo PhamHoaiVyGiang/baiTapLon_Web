@@ -263,7 +263,7 @@
             }
             //disprice không có thì ẩn
             let dispriceHTML = dispriceFormatted
-                ? `<h3 class="dis-price">Rb ${dispriceFormatted}</h3>`
+                ? `<h3 class="dis-price">Rp ${dispriceFormatted}</h3>`
                 : "";
             src.innerHTML += `    <div class="product-content">
             <div class="product-main">
@@ -275,7 +275,7 @@
                     <div class="content">
                         <h1 class="name">${x.name}</h1>
                         <h2 class="type">${x.type}</h2>
-                        <div class="price">   <h3 class="real-price">Rb ${priceFormatted}</h3>
+                        <div class="price">   <h3 class="real-price">Rp ${priceFormatted}</h3>
                         ${dispriceHTML}</div>
                     </div>
                 </div>

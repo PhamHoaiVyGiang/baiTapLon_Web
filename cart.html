@@ -53,11 +53,11 @@
         <h3>Cart Totals</h3>
         <div class="summary-row">
             <span class="summary-label">Subtotal: </span>
-            <span class="value-sub">Rs. 250,000.00</span>
+            <span class="value-sub">Rp. 250,000.00</span>
         </div>
         <div class="summary-row">
             <span class="summary-label">Total: </span>
-            <span class="value-to">Rs. 250,000.00</span>
+            <span class="value-to">Rp. 250,000.00</span>
         </div>
         <button class="check-btn">Check Out</button>
     </div>
@@ -173,7 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
   function formatPrice(price) {
-    return 'Rs. ' + price.toLocaleString('en-US', {minimumFractionDigits: 2});
+    return 'Rp. ' + price.toLocaleString('en-US', {minimumFractionDigits: 2});
   }
 
   function renderCart() {
