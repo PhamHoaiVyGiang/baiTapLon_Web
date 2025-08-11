@@ -1,0 +1,133 @@
+
+.billing_container{
+    max-width: 1440px;
+    height: 1680px;
+    margin: 0 auto;
+    padding: 63px 100px 52px;
+}
+h3{
+ font-size: 36px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-style: bold;
+}
+.container{
+    display: flex;   
+    gap: 36px;  
+}
+.detail{
+    width: 608px;
+    padding: 35px 79px;
+    flex-direction: column;
+    display: flex;
+    gap: 36px;
+
+}
+.sanpham{
+  
+    width: 608px;
+    padding: 87px 38px;
+}
+.chu{
+    font-size: 24px;
+}
+
+.name{
+    display: flex;
+    gap: 20px;
+}
+.khung{
+    display: block;
+    font-size: 16px;
+    margin-bottom: 6px;
+    font-family: 'Poppins', sans-serif;
+    
+}
+.name input{
+    border: solid 1px #9f9f9f;
+    border-radius: 10PX;
+    padding: 25px;
+}
+.phanconlai{
+    position: relative;
+    top: 36px;
+    flex-direction: column;
+    display: flex;
+    gap: 36px;
+}
+.phanconlai input{
+    border: solid 1px #9f9f9f;
+    border-radius: 10PX;
+    padding: 25px;
+    width: 453px;
+}
+.additional{
+    position: relative;
+    top: 36px;
+}
+.chon{
+    border: solid 1px #9f9f9f;
+    border-radius: 10PX;
+    padding: 25px;
+    width: 453px;
+}
+.theader{
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+}
+.order{
+    width: 318px;
+    height: 64px;
+    border: solid 1px #000000;
+    border-radius: 15px;
+    cursor: pointer;
+    background-color: #ffffff;
+    transition: all 0.1s ease;
+}
+button:active {
+    transform: translateY(2px); 
+    box-shadow: 0 2px #444;   
+}
+.chuanut{
+    display: flex;
+    justify-content: center;
+}
+.item{
+    display: flex;
+    justify-content: space-between;
+    gap: 22px;
+}
+.checkout, #productList{
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+.payment-description, .phuongthuc{
+    color: #9F9F9F;
+}
+.payment-options{
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+}
+.payment-section{
+    position: relative;
+    top: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+.total{
+    position: relative;
+    top:-5px;
+    font-size: 24px;
+    color: #B88E2F; 
+    font-weight: 700;
+}
+.phuongthuc input[type="radio"]:checked + span {
+    color: #000000;
+}
+
+
+
