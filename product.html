@@ -21,7 +21,8 @@
     </script>
 
     <div class="breadcrumb">
-        <span><a href="index.html">Home </a> &gt; <a href="shop.html">Shop </a> &gt; <strong id="product-name"> | </strong></span>
+        <span><a href="index.html">Home </a> &gt; <a href="shop.html">Shop </a> &gt; 
+            <strong  id="breadcrumb-product-name"> > | </strong></span>
     </div>
 
     <main class="product-page">
@@ -38,7 +39,7 @@
         </section>
 
         <section class="product-infor">
-            <h1 id="product-name">Asgaard sofa</h1>
+            <h1 id="product-title"></h1>
             <p class="price" id="product-price">Rs. 250,000.0</p>
             <div class="rating">
                 <span><img src="images/star.png" alt=""></span>
@@ -290,29 +291,15 @@ tabs.forEach((tab, index) => {
   });
 });
 
-
-window.onload = function() {
-  const productData = localStorage.getItem("selectedProduct");
-  if (productData) {
-    const product = JSON.parse(productData);
-
-    // Ví dụ hiển thị thông tin
-    document.querySelector("#product-name").textContent = product.name;
-    document.querySelector("#mainImg").src = product.image;
-    document.querySelector("#product-price").textContent = "Rb " + product.price;
-    // ... xử lý các trường khác tương tự
-  }
-};
-
 function handleAddToCart() {
-    const name = document.querySelector("#product-name").textContent;
-    const priceText = document.querySelector("#product-price").textContent.replace(/[^\d]/g, ""); // chỉ lấy số
-    const price = parseInt(priceText);
-    const image = document.querySelector("#mainImg").src;
-    const quantity = parseInt(document.getElementById("quantity-input").value); //Lấy số lượng
+        const name = document.querySelector("#product-title").textContent;
+        const priceText = document.querySelector("#product-price").textContent.replace(/[^\d]/g, "");
+        const price = parseInt(priceText);
+        const image = document.querySelector("#mainImg").src;
+        const quantity = parseInt(document.getElementById("quantity-input").value);
 
-    addToCart(name, price, image, quantity); // Truyền vào
-}
+        addToCart(name, price, image, quantity);
+    }
 
   // Xử lý chọn Size
   document.querySelectorAll(".size-btn").forEach(button => {
@@ -324,7 +311,20 @@ function handleAddToCart() {
   });
 });
 
+window.onload = function() {
+  const productData = localStorage.getItem("selectedProduct");
+  if (productData) {
+    const product = JSON.parse(productData);
 
+    // Cập nhật cả breadcrumb và tiêu đề
+    document.querySelector("#breadcrumb-product-name").textContent = product.name;
+    document.querySelector("#product-title").textContent = product.name;
+
+    // Cập nhật ảnh và giá
+    document.querySelector("#mainImg").src = product.image;
+    document.querySelector("#product-price").textContent = "Rb " + product.price.toLocaleString("vi-VN");
+  }
+};
   // Xử lý chọn Color
   document.querySelectorAll(".color-btn").forEach(button => {
     button.addEventListener("click", function () {
@@ -332,6 +332,7 @@ function handleAddToCart() {
       this.classList.add("selected");
     });
   });
+
 </script>
 </body>
 </html>
