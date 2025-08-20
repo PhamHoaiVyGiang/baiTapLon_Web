@@ -32,7 +32,7 @@
                 <img src="images/Stuart sofa 1.png" onclick="showImage('images/Stuart sofa 1.png')" alt="thumb 3">
                 <img src="images/Maya sofa three seater (1) 1.png" onclick="showImage('images/Maya sofa three seater (1) 1.png')" alt="thumb 4">
             </div>
-            <div class="main-image"  onclick="goToProductPage('Asgaard sofa', 'images/Asgaard sofa 5.png', 250000, ['L', 'XL', 'XS'], ['#816DFA', '#000000', '#B88E2F'])">
+            <div class="main-image">
                 <img id="mainImg" src="images/Asgaard sofa 5.png" alt="">
             </div>
         </section>
@@ -140,7 +140,7 @@
         <div class="our-product-image" id="our-product-image"></div>
 
       <div class="more-btn-container">
-        <a class="more-btn" href ="shop.html">Show more</a>
+        <a class="more-btn" href ="index.html">Show more</a>
     </div>
 
    <div id="footer"></div>
@@ -291,18 +291,7 @@ tabs.forEach((tab, index) => {
 });
 
 
-window.onload = function() {
-  const productData = localStorage.getItem("selectedProduct");
-  if (productData) {
-    const product = JSON.parse(productData);
 
-    // Ví dụ hiển thị thông tin
-    document.querySelector("#product-name").textContent = product.name;
-    document.querySelector("#mainImg").src = product.image;
-    document.querySelector("#product-price").textContent = "Rb " + product.price;
-    // ... xử lý các trường khác tương tự
-  }
-};
 
 function handleAddToCart() {
     const name = document.querySelector("#product-name").textContent;
@@ -332,6 +321,36 @@ function handleAddToCart() {
       this.classList.add("selected");
     });
   });
+
+  //hiển thị sản phẩm khi click vào sp ở home
+  window.onload = function () {
+    const productData = localStorage.getItem("selectedProduct");
+    if (productData) {
+        const product = JSON.parse(productData);
+
+        document.querySelector("#product-name").textContent = product.name;
+        document.querySelector("#mainImg").src = product.image;
+        document.querySelector("#product-price").textContent = "Rp " + product.price.toLocaleString("vi-VN");
+
+        // Nếu có giá khuyến mãi
+        if (product.disprice) {
+            const dispriceEl = document.getElementById("product-disprice");
+            if (dispriceEl) {
+                dispriceEl.innerText = "Rp " + product.disprice.toLocaleString("vi-VN");
+            }
+        } else {
+            const dispriceEl = document.getElementById("product-disprice");
+            if (dispriceEl) {
+                dispriceEl.style.display = "none";
+            }
+        }
+
+        //Xoá sau khi đã hiển thị xong
+        localStorage.removeItem("selectedProduct");
+    }
+};
+
+
 </script>
 </body>
 </html>

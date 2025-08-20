@@ -602,6 +602,7 @@ body {
   cursor: pointer;
   margin-bottom: 50px;
   white-space: nowrap;
+  text-decoration: none;
 }
 
 .contact-wrapper {
@@ -648,6 +649,7 @@ body {
   margin-bottom: 50px;
   display: flex;
   flex-direction: column;
+  cursor: pointer;
 }
 
 .contact-nav.nav-links {

@@ -265,7 +265,7 @@
             let dispriceHTML = dispriceFormatted
                 ? `<h3 class="dis-price">Rp ${dispriceFormatted}</h3>`
                 : "";
-            src.innerHTML += `    <div class="product-content">
+            src.innerHTML += `   <div class="product-content" onclick="selectProduct(${i})">
             <div class="product-main">
                 <div style="display: flex; flex-direction: column;">
                     <div style="position: relative">
@@ -282,15 +282,55 @@
             </div>
             
             <div class="more-info">
+<<<<<<< HEAD
                <a href="cart.html" class="addcart-btn" onclick="addToCart('${x.name}', ${x.price}, '${x.image}')">add to cart</a>
               <div class="more-info-bottom">
                 <a class="info-link" href="#"><img src="/images/Frame 11.png" alt=""></a>
                 <a class="info-link" href="#"><img src="/images/Frame 12.png" alt=""></a>
                 <a class="info-link" href="#"><img src="/images/Frame 10.png" alt=""></a>
               </div>
+=======
+            <a href="#" class="addcart-btn" onclick="addToCartFromHome(${i}, event)">add to cart</a>
+                <div class="more-info-bottom">
+                    <a class="info-link" href="#"><img src="/images/Frame 11.png" alt=""></a>
+                    <a class="info-link" href="#"><img src="/images/Frame 12.png" alt=""></a>
+                   <a class="info-link" href="#"><img src="/images/Frame 10.png" alt=""></a>
+                </div>
+>>>>>>> 2d9ad93 (index.html index.css footer.html product.html shop.html)
             </div>
           </div>`;
         }))
+
+        function selectProduct(index) {
+    const product = itemlist[index];
+    localStorage.setItem("selectedProduct", JSON.stringify(product));
+    window.location.href = "cart.html";
+}
+
+//link tới cart
+function addToCartFromHome(index, event) {
+    event.preventDefault(); // chặn reload trang vì là <a href="#">
+    event.stopPropagation(); // ngăn sự kiện nổi bọt lên div cha
+
+    const product = itemlist[index];
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    // Kiểm tra xem sản phẩm đã có trong giỏ chưa
+    const existing = cart.find(item => item.name === product.name);
+    if (existing) {
+        existing.quantity += 1; // tăng số lượng nếu đã có
+    } else {
+        cart.push({
+            name: product.name,
+            price: product.price,
+            image: product.image,
+            quantity: 1
+        });
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    window.location.href = "cart.html"; // chuyển sang trang cart
+}
 
   </script>
   <script>

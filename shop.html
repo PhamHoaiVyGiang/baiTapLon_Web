@@ -19,7 +19,7 @@
 
       <div class="overlay">
         <h1>Shop</h1>
-        <p class="breadcrumb"><a href="home.html">Home</a> > Shop</p>
+        <p class="breadcrumb"><a href="index.html">Home</a> > Shop</p>
       </div>
     </div>
   </div>
@@ -256,6 +256,7 @@
 
 
     let src = document.getElementById("our-product-image")
+<<<<<<< HEAD
     function formatProductHTML(x) {
       let priceFormatted = x.price.toLocaleString("vi-VN");
       let dispriceFormatted = x.disprice ? x.disprice.toLocaleString("vi-VN") : "";
@@ -301,7 +302,55 @@
             </div>
           </div>`;
           
+=======
+
+
+    function formatProductHTML(x, i) {
+  let priceFormatted = x.price.toLocaleString("vi-VN");
+  let dispriceFormatted = x.disprice ? x.disprice.toLocaleString("vi-VN") : "";
+  let saleBadge = "";
+
+  if (x.sale) {
+    if (typeof x.sale === "string" && x.sale.trim().toLowerCase() === "new") {
+      saleBadge = `<div class="bubble new"><h5>New</h5></div>`;
+    } else if (!isNaN(x.sale)) {
+      saleBadge = `<div class="bubble sale"><h5>${x.sale}%</h5></div>`;
+>>>>>>> 2d9ad93 (index.html index.css footer.html product.html shop.html)
     }
+  }
+
+  let dispriceHTML = dispriceFormatted
+    ? `<h3 class="dis-price">Rp ${dispriceFormatted}</h3>`
+    : "";
+
+  return `
+    <div class="product-content" onclick="selectProduct(${i})">
+        <div class="product-main">
+          <div style="display: flex; flex-direction: column;">
+            <div style="position: relative">
+              <img class="image" src="${x.image}" alt="">
+              ${saleBadge}
+            </div>
+            <div class="content">
+              <h1 class="name">${x.name}</h1>
+              <h2 class="type">${x.type}</h2>
+              <div class="price">
+                <h3 class="real-price">Rp ${priceFormatted}</h3>
+                ${dispriceHTML}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="more-info">
+           <a href="cart.html" class="addcart-btn" onclick="addToCart('${x.name}', ${x.price}, '${x.image}')">add to cart</a>
+          <div class="more-info-bottom">
+            <a class="info-link" href="#"><img src="/images/Frame 11.png" alt=""></a>
+            <a class="info-link" href="#"><img src="/images/Frame 12.png" alt=""></a>
+            <a class="info-link" href="#"><img src="/images/Frame 10.png" alt=""></a>
+          </div>
+        </div>
+      </div>`;
+}
   </script>
   <script>
     let currentPage = 1;
@@ -336,9 +385,9 @@ function renderProducts() {
       let end = start + itemsPerPage;
       let pageItems = filteredList.slice(start, end);
 
-      pageItems.forEach(item => {
-        container.innerHTML += formatProductHTML(item);
-      });
+     pageItems.forEach((item, index) => {
+  container.innerHTML += formatProductHTML(item, index);
+});
 
       document.getElementById("showing-count").textContent = 
         `${start + 1}–${Math.min(end, filteredList.length)}`;
@@ -474,7 +523,7 @@ function renderProducts() {
 
         localStorage.setItem("cart", JSON.stringify(cart));
 
-        // 👉 Sau khi thêm vào cart, chuyển qua trang cart
+        // Sau khi thêm vào cart, chuyển qua trang cart
         window.location.href = "cart.html";
       });
     });
@@ -503,6 +552,12 @@ function renderProducts() {
     // Chuyển sang trang giỏ hàng
     window.location.href = "cart.html";
   }
+
+   function selectProduct(index) {
+  const product = itemlist[index];
+  localStorage.setItem("selectedProduct", JSON.stringify(product));
+  window.location.href = "product.html";
+}
 </script>
 
 
