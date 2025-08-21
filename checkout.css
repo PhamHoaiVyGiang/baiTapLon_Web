@@ -1,7 +1,5 @@
-
 .billing_container{
     max-width: 1440px;
-    height: 1680px;
     margin: 0 auto;
     padding: 63px 100px 52px;
 }
@@ -11,27 +9,27 @@ h3{
     font-weight: 600;
     font-style: bold;
 }
-.container{
-    display: flex;   
-    gap: 36px;  
-}
-.detail{
-    width: 608px;
-    padding: 35px 79px;
-    flex-direction: column;
+.container {
     display: flex;
+    flex-wrap: wrap; 
     gap: 36px;
-
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
 }
-.sanpham{
-  
-    width: 608px;
-    padding: 87px 38px;
+.detail, .sanpham {
+    padding: 40px 30px;
+    flex: 1 1 48%; 
+    min-width: 320px;
+    box-sizing: border-box;
 }
 .chu{
     font-size: 24px;
 }
-
+.wrapper{
+    width: 450px;
+    margin: 0 auto;
+}
 .name{
     display: flex;
     gap: 20px;
@@ -41,7 +39,6 @@ h3{
     font-size: 16px;
     margin-bottom: 6px;
     font-family: 'Poppins', sans-serif;
-    
 }
 .name input{
     border: solid 1px #9f9f9f;
@@ -59,7 +56,7 @@ h3{
     border: solid 1px #9f9f9f;
     border-radius: 10PX;
     padding: 25px;
-    width: 453px;
+    width: 453px; 
 }
 .additional{
     position: relative;
@@ -128,6 +125,50 @@ button:active {
 .phuongthuc input[type="radio"]:checked + span {
     color: #000000;
 }
-
-
-
+@media (max-width: 768px) {
+    .billing_container {
+        padding: 30px;
+    }
+    .container {
+        flex-direction: column;
+        gap: 100px;
+        padding: 20px 0px;
+    }
+    .sanpham {
+        padding: 30px;
+        max-width: 100%;
+        gap: 12px;
+    }
+    .checkout{
+        gap: 12px;
+    }
+    .detail{
+        width: 400px;
+        padding:  0px;
+        margin: 0 auto; 
+    }
+    .theader p{
+        font-size: 20px;
+    }
+    .billing_detail h3{
+        font-size: 27px;
+    }
+    .product-List,.payment-section,.khung{
+        font-size: 12px;
+    }
+    .order{
+        width: 220px;
+        height: 40px;
+    }
+    .phanconlai input,.phanconlai select{
+        max-width: 400px;
+        padding: 18px;
+    }
+    .name input{
+        width:190px ;
+        padding: 18px;
+    }
+    .phanconlai{
+        gap: 26px;
+    }
+}

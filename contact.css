@@ -181,3 +181,24 @@
     display: block;
 }
 
+@media (max-width: 768px) {
+  .title h3{
+    font-size: 26px;
+  }
+  .title p,.text p{
+    font-size: 13px;
+  }
+  .contact-icon {
+  width: 17px;
+  height: 22.59px;
+  }
+  .text strong{
+    font-size: 22px;
+  }
+  .contact-container{
+    padding: 30px 40px;
+  }
+  .contact-wrapperr {
+    gap: 10px;
+  }
+}
